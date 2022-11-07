@@ -1,0 +1,93 @@
+def unnamed():
+  global _hidden_verificationVariable=0
+  set_standard_analog_input_domain(0, 1)
+  set_standard_analog_input_domain(1, 1)
+  set_tool_analog_input_domain(0, 1)
+  set_tool_analog_input_domain(1, 1)
+  set_analog_outputdomain(0, 0)
+  set_analog_outputdomain(1, 0)
+  set_input_actions_to_default()
+  set_tcp(p[0.0,0.0,0.0,0.0,0.0,0.0])
+  set_tool_communication(False, 115200, 0, 1, 1.5, 3.5)
+  set_tool_output_mode(0)
+  set_tool_digital_output_mode(0, 1)
+  set_tool_digital_output_mode(1, 1)
+  set_tool_voltage(0)
+  set_safety_mode_transition_hardness(1)
+  set_gravity([0.0, 0.0, 9.82])
+  set_target_payload(1.000000, [0.000000, 0.000000, 0.000000], [0.001539, 0.001539, 0.001539, 0.000000, 0.000000, 0.000000])
+  global Point_1=p[2.7755575615628914E-17,1.6653345369377348E-16,0.09999999999999995,3.141592653589793,0.0,0.0]
+  global Point_2=p[0.5,0.0,0.0,0.0,1.5707963267948966,0.0]
+  step_count_931ad8e3_c677_4770_a120_3d858069a4f3 = 0.0
+  thread Step_Counter_Thread_267fdc7b_a158_4831_8a48_2abbce8fec34():
+    while (True):
+      step_count_931ad8e3_c677_4770_a120_3d858069a4f3 = step_count_931ad8e3_c677_4770_a120_3d858069a4f3 + 1.0
+      sync()
+    end
+  end
+  run Step_Counter_Thread_267fdc7b_a158_4831_8a48_2abbce8fec34()
+  global Waypoint_1_p=p[.200031091277, .400096992882, .800019551322, -.000000000024, 3.120403366060, .000000000001]
+  global Waypoint_1_q=[-2.3334353936155185, -1.3210221743232156, 0.3496405766094055, -0.6140541110799669, 4.697069347010839, 2.3788414473703483]
+  global Waypoint_2_p=p[.200014068324, .400002317769, .600006907446, -.000000000023, 3.120403366103, .000000000001]
+  global Waypoint_2_q=[-2.3335600578139437, -1.6868282630961398, 1.3932817133162176, -1.2918910686249152, 4.6970711721025875, 2.3787167819058963]
+  global Waypoint_3_p=p[.400007418601, .400002317339, .600006907114, -.000000000023, 3.120403366097, .000000000001]
+  global Waypoint_3_q=[-2.5920741040306874, -1.395449830049321, 1.0930552304397396, -1.2864721823944443, 4.701322911276396, 2.120214887940425]
+  global Waypoint_4_p=p[.400007417935, .600024429598, .600006906508, -.000000000023, 3.120403366091, .000000000001]
+  global Waypoint_4_q=[-2.342571871724873, -0.8486070797749665, 0.2631929151852139, -1.0001608944767666, 4.697203732098977, 2.3697048948816253]
+  global Waypoint_5_p=p[.200031091892, .600024428739, .600006906313, -.000000000024, 3.120403366072, .000000000001]
+  global Waypoint_5_q=[-2.101986435724296, -1.2073643128952867, 0.8456954677448074, -1.2198623178071655, 4.6941198256148935, 2.610304482578581]
+  while (True):
+    $ 1 "Robot Program"
+    $ 2 "MoveL"
+    $ 3 "Waypoint_1" "breakAfter"
+    movel(Waypoint_1_p, a=1.2, v=0.25)
+    $ 4 "MoveL"
+    $ 5 "Waypoint_2" "breakAfter"
+    movel(Waypoint_2_p, a=1.2, v=0.25)
+    $ 6 "Waypoint_3" "breakAfter"
+    movel(Waypoint_3_p, a=1.2, v=0.25)
+    $ 7 "Waypoint_4" "breakAfter"
+    movel(Waypoint_4_p, a=1.2, v=0.25)
+    $ 8 "Waypoint_5" "breakAfter"
+    movel(Waypoint_5_p, a=1.2, v=0.25)
+    $ 9 "Waypoint_2" "breakAfter"
+    movel(Waypoint_2_p, a=1.2, v=0.25)
+    $ 10 "MoveL"
+    $ 11 "Waypoint_1" "breakAfter"
+    movel(Waypoint_1_p, a=1.2, v=0.25)
+    $ 12 "MoveJ"
+    $ 13 "Waypoint_1" "breakAfter"
+    movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 14 "MoveJ"
+    $ 15 "Waypoint_2" "breakAfter"
+    movej(get_inverse_kin(Waypoint_2_p, qnear=Waypoint_2_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 16 "Waypoint_3" "breakAfter"
+    movej(get_inverse_kin(Waypoint_3_p, qnear=Waypoint_3_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 17 "Waypoint_4" "breakAfter"
+    movej(get_inverse_kin(Waypoint_4_p, qnear=Waypoint_4_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 18 "Waypoint_5" "breakAfter"
+    movej(get_inverse_kin(Waypoint_5_p, qnear=Waypoint_5_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 19 "Waypoint_2" "breakAfter"
+    movej(get_inverse_kin(Waypoint_2_p, qnear=Waypoint_2_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 20 "MoveJ"
+    $ 21 "Waypoint_1" "breakAfter"
+    movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 22 "MoveP"
+    $ 23 "Waypoint_1" "breakAfter"
+    movep(Waypoint_1_p, a=1.2, v=0.25, r=0.025)
+    $ 24 "MoveP"
+    $ 25 "Waypoint_2" "breakAfter"
+    movep(Waypoint_2_p, a=1.2, v=0.25, r=0.025)
+    $ 26 "Waypoint_3" "breakAfter"
+    movep(Waypoint_3_p, a=1.2, v=0.25, r=0.025)
+    $ 27 "Waypoint_4" "breakAfter"
+    movep(Waypoint_4_p, a=1.2, v=0.25, r=0.025)
+    $ 28 "Waypoint_5" "breakAfter"
+    movep(Waypoint_5_p, a=1.2, v=0.25, r=0.025)
+    $ 29 "Waypoint_2" "breakAfter"
+    movep(Waypoint_2_p, a=1.2, v=0.25, r=0.025)
+    $ 30 "MoveP"
+    $ 31 "Waypoint_1" "breakAfter"
+    movep(Waypoint_1_p, a=1.2, v=0.25, r=0.0)
+  end
+end

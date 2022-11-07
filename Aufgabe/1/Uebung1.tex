@@ -1,0 +1,221 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{bbding}
+\usepackage{amssymb}
+\begin{document}
+\Large
+Robotik-Praktikum Übung1
+\large
+Youran Wang 719511 RAS
+
+
+\section{Lineare Transformation}
+a).
+\[
+\left[ \begin{array}{ccc}
+    1.3  &  0       & 0  \\
+    0 &  0.83 &  0 \\
+    0 &  0 &  1  \\
+\end{array}
+\right]
+\]
+b).
+\[
+R_{y}= \left[ \begin{array}{ccc}
+    cos(45) &  0       & sin(45)  \\
+    0 &  1 &  0 \\
+    -sin(45) &  0 &  cos(45)  \\
+\end{array}\right] = \left[ \begin{array}{ccc}
+    0.7071 &  0       & 0.7071  \\
+    0 &  1 &  0 \\
+    -0.7071 &  0 &  0.7071 \\
+\end{array}
+\right]
+\]
+c).
+\[
+ T_[1]=\left[ \begin{array}{ccc}
+    0.9848  &  0       & 0.1736 \\
+    0.1228  &  0.7071  & -0.6964 \\
+    -0.1228 &  0.7071  & 0.6964  \\
+\end{array}\right]\\
+\]\[
+T_[2]=\left[ \begin{array}{ccc}
+    0.9848  &  0.1228  & 0.1228 \\
+    0       &  0.7071  & -0.7071 \\
+    -0.1736 &  0.6964  & 0.6964  \\
+\end{array}\right]\\
+\]
+Es gibt Unterschied. Weil die 2 Rotationen sind Euler-Winkel und YPR-Winkel. Also intrinsisch oder extrinsisch ist. Es bestimmt, in welchem Koordinatensystem die Rotation ist.
+\\
+\\
+Intrinsische Rotation ist im World-Koordinatensystem, das bedeutet die 2. Rotation wird noch um der Achse des World-Koordinatensystem machen.
+\\
+\\
+Extrinsische Rotation ist im Roboter-Koordinatensystem, das bedeutet die 2. Rotation wird auch um der neue Achse machen.
+
+\section{Homogene Koordinaten und Transformation}
+a).
+\[
+\left[ \begin{array}{cccc}
+     1.3 &  0      & 0  & 10\\
+     0   &  0.83   & 0  & 0 \\
+     0   &  0      & 1  & 0 \\
+     0   &  0      & 0  & 1 \\
+\end{array}
+\right]
+\]
+b).
+\[
+T= \left[ \begin{array}{cccc}
+         &         &    &   \\
+         &  M      &    & t \\
+         &         &    &   \\
+     0   &  0      & 0  & 1 \\
+\end{array}
+\right]
+\]
+\[
+M^{'}p^{'}=(M*p , 0)^{T}+(t,1)^{T}
+\]
+\[
+\Rightarrow p^{'}=p*M+(t,1)^{'}
+\]
+\[
+\Rightarrow p^{}=(p^{'}-(t,1)^{'})/M^{-1}
+\]
+\[
+\Rightarrow
+T^{-1}=\left[ \begin{array}{cccc}
+         &         &    &   \\
+         &  M^{-1}      &    & -M^{-1}t \\
+         &         &    &   \\
+     0   &  0      & 0  & 1 \\
+\end{array}
+\right]
+\]
+Punkt P macht Translation und Rotation mit Transformation T, und dann p' bekommt.
+\\
+Gegenseitig können wir auch den Punkt p'mit Transformation T' zurück machen, um den Punkt p anzunehmen.
+\\
+Deshalb beim Rotationsteil benutzen wir M',und Translationsteil ist -M't.
+
+\newpage
+\section{Eigenschaften von Vektoren}
+
+a).
+\[
+||v|| = \sqrt{(v,v)} = \sqrt{1^{2} + (\sqrt{2})^{2} + 0^{2}} = \sqrt{3}
+\]
+b).
+\[
+\alpha=acos((v,w)/||v||*||w||)
+\]
+\[
+(v,w)=1/\sqrt{3}
+\]
+\[
+||v||= \sqrt{(v,v)}=1
+\]
+\[
+||w||= = \sqrt{(w,w)}=1
+\]
+\[
+\alpha=acos((1/\sqrt{3})/1)=acos(1/\sqrt{3})=55.25^{o} oder -124.75^{o}
+\]
+
+\section{Transformation von koordinatensystem}
+a).
+\[
+T=\left[ \begin{array}{cccc}
+     0.7071   &  -0.7071     &  0  &  4 \\
+     0.7071   &  0.7071      &  0  &  3 \\
+     0        &  0           &  1  &  0 \\
+     0        &  0           &  0  &  1 \\
+\end{array}
+\right]
+\]
+b).
+\[
+O=(0,-5)
+\]
+\[
+v=(3\sqrt{2},0)
+\]
+c).
+Ja, wir können die benutztn. Die alte Koordinaten wird mit Transformation multipliziert.
+
+
+\section{Eigenschatfen von Matrizen}
+a).
+\[
+det=1.3*0.83*1+0+0-0-0-0=1.079
+\]
+b).
+\[
+R = \left[ \begin{array}{ccc}
+    0.7071 &  0       & 0.7071  \\
+    0 &  1 &  0 \\
+    -0.7071 &  0 &  0.7071 \\
+\end{array}
+\right]
+\]
+\[
+det(A-xE_{n}) = 0 
+\]
+\[
+\Rightarrow
+det\left[ \begin{array}{ccc}
+        0.7071-\lambda & 0         & 0.7071  \\
+        0              & 1-\lambda & 0 \\
+        -0.7071        & 0         & 0.7071-\lambda  \\
+\end{array}
+\right]=0
+\]
+\[
+(0.7071-\lambda)(1-\lambda)(0.7071-\lambda)-0.7071*(-0.7071)*(1-\lambda)=0
+\]
+\[
+\lambda=1
+\]
+
+Eigenwerte ist \lambda=1
+
+\[
+\left[ \begin{array}{ccc}
+        -0.2929        & 0   & 0.7071  \\
+        0              & 0   & 0 \\
+        -0.7071        & 0   & -0.2929 \\
+\end{array}
+\right]
+\]
+\[
+x=(a,b,c)^{T}
+\]
+\[
+(A-\lambda*E)*x=0
+\]
+\[
+\left[ \begin{array}{ccc}
+        -0.2929        & 0   & 0.7071  \\
+        0              & 0   & 0 \\
+        -0.7071        & 0   & -0.2929 \\
+\end{array}
+\right]*\left[ \begin{array}{c}
+        a & b & c  \\
+\end{array}
+\right]=0
+\]
+\[
+\Rightarrow  \begin{array}{c}
+        -0.2929a+0.7071c=0 & -0.7071a-0.2929c=0 \\
+\end{array}
+\]
+\[
+\Rightarrow  \begin{array}{c}
+        a=0 & b=beliebig & c=0 \\
+\end{array}
+\]
+Eigenvektoren ist (0,b,0)^{T}
+
+\end{document}

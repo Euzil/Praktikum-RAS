@@ -1,0 +1,93 @@
+def Aufgabe1_1():
+  global _hidden_verificationVariable=0
+  set_standard_analog_input_domain(0, 1)
+  set_standard_analog_input_domain(1, 1)
+  set_tool_analog_input_domain(0, 1)
+  set_tool_analog_input_domain(1, 1)
+  set_analog_outputdomain(0, 0)
+  set_analog_outputdomain(1, 0)
+  set_input_actions_to_default()
+  set_tcp(p[0.0,0.0,0.0,0.0,0.0,0.0])
+  set_safety_mode_transition_hardness(1)
+  set_tool_communication(False, 115200, 0, 1, 1.5, 3.5)
+  set_tool_output_mode(0)
+  set_tool_digital_output_mode(0, 1)
+  set_tool_digital_output_mode(1, 1)
+  set_tool_voltage(0)
+  set_gravity([0.0, 0.0, 9.82])
+  set_target_payload(0.000000, [0.000000, 0.000000, 0.000000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
+  global Point_1=p[0.0,0.0,0.1,3.141592653589793,0.0,0.0]
+  global Point_2=p[0.5,0.0,0.0,0.0,1.5707963267948966,0.0]
+  step_count_22c7fefc_130e_43fe_91f5_b2776e75db40 = 0.0
+  thread Step_Counter_Thread_687aec24_8b56_4207_b69f_b808456d8a8c():
+    while (True):
+      step_count_22c7fefc_130e_43fe_91f5_b2776e75db40 = step_count_22c7fefc_130e_43fe_91f5_b2776e75db40 + 1.0
+      sync()
+    end
+  end
+  run Step_Counter_Thread_687aec24_8b56_4207_b69f_b808456d8a8c()
+  global Waypoint_1_p=p[.200000000128, .500000000110, .600000000110, -.000000000000, 3.141592653590, -.000000000000]
+  global Waypoint_1_q=[-2.2806108540572776, -1.8683543835589669, -4.327369144560075, -1.6582581060605195, -1.5707963265897877, -3.8514071810573363]
+  global Waypoint_2_p=p[.200000000128, .500000000110, .399999999890, -.000000000000, 3.141592653590, -.000000000000]
+  global Waypoint_2_q=[-2.28061085397678, -1.7617719433673127, -4.037897195149823, -2.0543124956624297, -1.5707963265897877, -3.85140718097686]
+  global Waypoint_3_p=p[-.000000000110, .500000000110, .399999999890, -.000000000000, 3.141592653590, -.000000000000]
+  global Waypoint_3_q=[-1.9265532583477594, -1.8396520127647928, -3.9813832923730397, -2.032946329041742, -1.5707963265897877, -3.4973495853478553]
+  global Waypoint_4_p=p[-.000000000110, .299999999890, .399999999890, -.000000000000, 3.141592653590, -.000000000000]
+  global Waypoint_4_q=[-2.1901389375259557, -2.371648890428574, -3.752264770273062, -1.7300679734779143, -1.5707963265897877, -3.7609352645260588]
+  global Waypoint_5_p=p[.200000000110, .299999999890, .399999999890, -.000000000000, 3.141592653590, -.000000000000]
+  global Waypoint_5_q=[-2.662882494936198, -2.1806761867515583, -3.807110192997045, -1.8661952544307923, -1.5707963265896971, -4.233678821936285]
+  while (True):
+    $ 1 "Robot Program"
+    $ 2 "MoveJ"
+    $ 3 "Waypoint_1" "breakAfter"
+    movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 4 "MoveJ"
+    $ 5 "Waypoint_2" "breakAfter"
+    movej(get_inverse_kin(Waypoint_2_p, qnear=Waypoint_2_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 6 "Waypoint_3" "breakAfter"
+    movej(get_inverse_kin(Waypoint_3_p, qnear=Waypoint_3_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 7 "Waypoint_4" "breakAfter"
+    movej(get_inverse_kin(Waypoint_4_p, qnear=Waypoint_4_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 8 "Waypoint_5" "breakAfter"
+    movej(get_inverse_kin(Waypoint_5_p, qnear=Waypoint_5_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 9 "Waypoint_2" "breakAfter"
+    movej(get_inverse_kin(Waypoint_2_p, qnear=Waypoint_2_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 10 "MoveJ"
+    $ 11 "Waypoint_1" "breakAfter"
+    movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 12 "MoveL"
+    $ 13 "Waypoint_1" "breakAfter"
+    movel(Waypoint_1_p, a=1.2, v=0.25)
+    $ 14 "MoveL"
+    $ 15 "Waypoint_2" "breakAfter"
+    movel(Waypoint_2_p, a=1.2, v=0.25)
+    $ 16 "Waypoint_3" "breakAfter"
+    movel(Waypoint_3_p, a=1.2, v=0.25)
+    $ 17 "Waypoint_4" "breakAfter"
+    movel(Waypoint_4_p, a=1.2, v=0.25)
+    $ 18 "Waypoint_5" "breakAfter"
+    movel(Waypoint_5_p, a=1.2, v=0.25)
+    $ 19 "Waypoint_2" "breakAfter"
+    movel(Waypoint_2_p, a=1.2, v=0.25)
+    $ 20 "MoveL"
+    $ 21 "Waypoint_1" "breakAfter"
+    movel(Waypoint_1_p, a=1.2, v=0.25)
+    $ 22 "MoveP"
+    $ 23 "Waypoint_1" "breakAfter"
+    movep(Waypoint_1_p, a=1.2, v=0.25, r=0.025)
+    $ 24 "MoveP"
+    $ 25 "Waypoint_2" "breakAfter"
+    movep(Waypoint_2_p, a=1.2, v=0.25, r=0.025)
+    $ 26 "Waypoint_3" "breakAfter"
+    movep(Waypoint_3_p, a=1.2, v=0.25, r=0.025)
+    $ 27 "Waypoint_4" "breakAfter"
+    movep(Waypoint_4_p, a=1.2, v=0.25, r=0.025)
+    $ 28 "Waypoint_5" "breakAfter"
+    movep(Waypoint_5_p, a=1.2, v=0.25, r=0.025)
+    $ 29 "Waypoint_2" "breakAfter"
+    movep(Waypoint_2_p, a=1.2, v=0.25, r=0.025)
+    $ 30 "MoveP"
+    $ 31 "Waypoint_1" "breakAfter"
+    movep(Waypoint_1_p, a=1.2, v=0.25, r=0.0)
+  end
+end
